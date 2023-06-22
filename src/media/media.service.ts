@@ -11,8 +11,13 @@ export class MediaService {
     @InjectModel(Media.name) private mediaModel: Model<MediaDocument>,
   ) {}
 
-  create(createMediaDto: CreateMediaDto) {
-    return 'This action adds a new media';
+  async create(createMediaDto: CreateMediaDto) {
+    const createMedia = new this.mediaModel(createMediaDto);
+    try {
+      return await createMedia.save();
+    } catch (error) {
+      throw error;
+    }
   }
 
   findAll() {
