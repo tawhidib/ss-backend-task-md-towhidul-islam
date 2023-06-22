@@ -28,10 +28,14 @@ export class MediaController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.mediaService.findOne(+id);
+  async findOne(@Param('id') id: string): Promise<Media> {
+    return await this.mediaService.findOne(id);
   }
 
+  /**   OUT OF REQUIREMENT ... ... ...
+   * 
+   * 
+   * 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateMediaDto: UpdateMediaDto) {
     return this.mediaService.update(+id, updateMediaDto);
@@ -40,5 +44,8 @@ export class MediaController {
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.mediaService.remove(+id);
-  }
+  }  
+
+
+  */
 }

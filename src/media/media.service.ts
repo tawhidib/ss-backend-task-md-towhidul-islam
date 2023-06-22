@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateMediaDto } from './dto/create-media.dto';
 import { UpdateMediaDto } from './dto/update-media.dto';
 import { InjectModel } from '@nestjs/mongoose';
@@ -38,15 +38,31 @@ export class MediaService {
     }
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} media`;
+  async findOne(id: string): Promise<Media> {
+    const media = await this.mediaModel.findById(id);
+    if (!media) {
+      throw new NotFoundException('Media not found');
+    }
+
+    try {
+      return media;
+    } catch (error) {
+      throw error;
+    }
   }
 
+  /**   OUT OF REQUIREMENT ... ... ...
+   * 
+   * 
+   * 
   update(id: number, updateMediaDto: UpdateMediaDto) {
     return `This action updates a #${id} media`;
   }
 
   remove(id: number) {
     return `This action removes a #${id} media`;
-  }
+  }   
+
+
+  */
 }
