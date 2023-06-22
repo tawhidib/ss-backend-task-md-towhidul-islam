@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateMediaDto } from './dto/create-media.dto';
-import { UpdateMediaDto } from './dto/update-media.dto';
+// import { UpdateMediaDto } from './dto/update-media.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { Media, MediaDocument } from './schemas/media.schema';
 import { Model } from 'mongoose';
