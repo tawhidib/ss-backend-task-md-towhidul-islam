@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  Query,
 } from '@nestjs/common';
 import { MediaService } from './media.service';
 import { CreateMediaDto } from './dto/create-media.dto';
@@ -22,8 +23,8 @@ export class MediaController {
   }
 
   @Get()
-  findAll() {
-    return this.mediaService.findAll();
+  async findAll(@Query() query: any): Promise<Media[]> {
+    return await this.mediaService.findAll(query);
   }
 
   @Get(':id')
